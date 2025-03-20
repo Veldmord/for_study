@@ -89,7 +89,6 @@ func (l *list) MoveToFront(i *ListItem) {
 	if l.front == i {
 		return
 	}
-
 	// Удаляем из текущей позиции
 	if i.Prev != nil {
 		i.Prev.Next = i.Next
@@ -101,7 +100,6 @@ func (l *list) MoveToFront(i *ListItem) {
 	} else {
 		l.back = i.Prev
 	}
-
 	// Вставляем в начало
 	i.Prev = nil
 	i.Next = l.front

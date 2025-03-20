@@ -34,9 +34,9 @@ func NewCache(capacity int) Cache {
 func (l *lruCache) Set(key Key, value interface{}) bool {
 	l.mu.Lock()
 	defer l.mu.Unlock()
-	if value, ok := l.items[key]; ok {
-		value.Value = cacheItem{key: key, value: value}
-		l.queue.MoveToFront(value)
+	if item, ok := l.items[key]; ok {
+		item.Value = cacheItem{key: key, value: value}
+		l.queue.MoveToFront(item)
 		return true
 	}
 

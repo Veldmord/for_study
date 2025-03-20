@@ -12,15 +12,16 @@ func Top10(str string) []string {
 		countWords[s]++
 	}
 
-	type resultStr struct {
+	sortedMap := make([]struct {
 		key   string
 		count int
-	}
-
-	var sortedMap []resultStr
+	}, 0, len(countWords))
 
 	for k, v := range countWords {
-		sortedMap = append(sortedMap, resultStr{k, v})
+		sortedMap = append(sortedMap, struct {
+			key   string
+			count int
+		}{k, v})
 	}
 
 	sort.Slice(sortedMap, func(i, j int) bool {
